@@ -161,6 +161,12 @@ footer{padding:46px 0 58px;border-top:var(--bw) solid var(--line);margin-top:82p
 .foot-in{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
 .foot-links{display:flex;gap:24px;font-size:14px;font-weight:500}
 .foot-note{font-size:12.5px;color:var(--mut);margin-top:20px;max-width:62ch}
+/* faq */
+.faq{max-width:760px;margin:0 auto}
+.faq .qa{padding:22px 2px;border-bottom:var(--bw) solid var(--line)}
+.faq .qa:last-child{border-bottom:0}
+.faq .q{font-size:18px;font-weight:700;letter-spacing:-.01em}
+.faq .a{color:var(--ink2);font-size:15.5px;margin-top:8px;line-height:1.55;max-width:64ch}
 </style>
 </head>
 <body>
@@ -171,6 +177,7 @@ footer{padding:46px 0 58px;border-top:var(--bw) solid var(--line);margin-top:82p
     <div class="nav-links">
       <a href="#features">Features</a>
       <a href="#how">How it works</a>
+      <a href="#faq">FAQ</a>
       <a href="#download" class="btn btn-primary">Download</a>
     </div>
   </div>
@@ -288,6 +295,22 @@ footer{padding:46px 0 58px;border-top:var(--bw) solid var(--line);margin-top:82p
   </div>
 </section>
 
+<section id="faq">
+  <div class="wrap">
+    <div class="head">
+      <h2>Honest about the limits</h2>
+      <p>What Mocca does well — and what it doesn't.</p>
+    </div>
+    <div class="faq">
+      <div class="qa"><div class="q">Which Macs does it run on?</div><div class="a">macOS on Apple Silicon (M1 or later). Intel Macs and Windows aren't supported.</div></div>
+      <div class="qa"><div class="q">How capable is the on-device AI?</div><div class="a">It's a small model running locally — great at sorting, labeling, and short tasks, but not deep reasoning like GPT-4. Mocca sticks to what it does reliably.</div></div>
+      <div class="qa"><div class="q">Does it work offline?</div><div class="a">Reading already-downloaded mail and the on-device AI work offline. You need a connection to fetch new mail and to send.</div></div>
+      <div class="qa"><div class="q">Does it work with Outlook?</div><div class="a">Not yet — Microsoft requires OAuth, which Mocca doesn't do. Gmail, iCloud, Yahoo, and Fastmail connect over IMAP.</div></div>
+      <div class="qa"><div class="q">Where does my email go?</div><div class="a">Nowhere. Mocca connects directly to your provider over IMAP — there are no Mocca servers, no telemetry, no account.</div></div>
+    </div>
+  </div>
+</section>
+
 <section id="download" style="padding-top:24px">
   <div class="band">
     <h2>Email that stays on your machine.</h2>
@@ -304,10 +327,11 @@ footer{padding:46px 0 58px;border-top:var(--bw) solid var(--line);margin-top:82p
       <div class="foot-links">
         <a href="#features">Features</a>
         <a href="#how">How it works</a>
+        <a href="#faq">FAQ</a>
         <a href="#download">Download</a>
       </div>
     </div>
-    <div class="foot-note">Honest about limits: Mac only, Apple Silicon. The local model is small and not as capable as hosted models like GPT-4 — it's good at sorting and short tasks, not deep reasoning. You need a connection to fetch and send mail; reading cached mail and the on-device AI work offline. Outlook isn't supported yet (Microsoft requires OAuth, which Mocca doesn't do). It connects directly to your provider over IMAP — there are no Mocca servers.</div>
+    <div class="foot-note">Connects directly to your email provider over IMAP — there are no Mocca servers, no telemetry, no account.</div>
   </div>
 </footer>
 
