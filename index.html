@@ -53,7 +53,8 @@ nav{position:sticky;top:0;z-index:50;background:rgba(236,238,243,.82);backdrop-f
 .window{text-align:left;background:var(--panel);border:var(--bw) solid var(--line-2);border-radius:var(--r-lg);box-shadow:0 24px 60px rgba(45,45,70,.16);overflow:hidden}
 .win-bar{display:flex;align-items:center;gap:7px;padding:11px 15px;border-bottom:var(--bw) solid var(--line);background:var(--tint)}
 .win-bar i{width:11px;height:11px;border-radius:50%;background:#cdd0d8;display:inline-block}
-.win-body{display:grid;grid-template-columns:212px 1fr;min-height:376px;background:var(--wall)}
+.win-body{display:grid;grid-template-columns:188px 1fr 296px;min-height:392px;background:var(--wall)}
+@media(max-width:820px){.win-body{grid-template-columns:160px 1fr}.win-agent{display:none}}
 .win-side{background:var(--panel);border-right:var(--bw) solid var(--line);padding:12px 10px}
 .win-side .compose{display:flex;align-items:center;justify-content:center;gap:7px;background:var(--mocca);color:#fff;border-radius:10px;padding:9px;font-weight:600;font-size:13px;margin-bottom:12px}
 .win-side .row{display:flex;align-items:center;justify-content:space-between;padding:8px 11px;border-radius:9px;font-size:13.5px;color:var(--ink2)}
@@ -72,6 +73,25 @@ nav{position:sticky;top:0;z-index:50;background:rgba(236,238,243,.82);backdrop-f
 .mail .subj{color:var(--ink2);font-size:13px;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .mail .time{font-size:12px;color:var(--mut);white-space:nowrap;flex-shrink:0}
 .mail.unread .who{font-weight:700}
+
+/* agent pane — the chat that reads, then acts (the differentiator) */
+.win-agent{background:var(--panel);border-left:var(--bw) solid var(--line);padding:14px 13px;display:flex;flex-direction:column;gap:11px}
+.wa-head{font-size:10.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--mut);display:flex;align-items:center;gap:7px}
+.wa-head .dot{width:8px;height:8px;border-radius:50%;background:var(--mocca)}
+.wa-user{align-self:flex-end;background:var(--mocca);color:#fff;border-radius:13px 13px 4px 13px;padding:8px 12px;font-size:12.5px;line-height:1.4;max-width:90%}
+.wa-think{display:flex;align-items:center;gap:7px;color:var(--mut);font-size:12px}
+.wa-think .sp{width:10px;height:10px;border:2px solid var(--line-2);border-top-color:var(--mocca);border-radius:50%;display:inline-block;animation:waspin .8s linear infinite}
+@keyframes waspin{to{transform:rotate(360deg)}}
+.wa-card{background:var(--tint);border:var(--bw) solid var(--line-2);border-radius:12px;padding:12px 13px;margin-top:2px}
+.wa-card .h{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);margin-bottom:9px}
+.wa-steps{list-style:none;display:flex;flex-direction:column;gap:8px;margin:0;padding:0}
+.wa-steps li{display:flex;gap:9px;align-items:flex-start;font-size:12.5px;font-weight:600;color:var(--ink);line-height:1.35}
+.wa-steps li .n{flex-shrink:0;width:17px;height:17px;border-radius:50%;background:var(--chip);color:var(--ink2);font-size:10.5px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.wa-steps li b{color:var(--mocca)}
+.wa-btns{display:flex;gap:7px;margin-top:12px}
+.wa-btns span{flex:1;text-align:center;border-radius:8px;padding:7px;font-size:12px;font-weight:600}
+.wa-btns .ghost{border:var(--bw) solid var(--line-2);color:var(--ink2)}
+.wa-btns .go{background:var(--ink);color:#fff}
 
 /* trust strip */
 .trust{padding:22px 0;border-top:var(--bw) solid var(--line);border-bottom:var(--bw) solid var(--line);background:var(--panel);margin-top:64px}
@@ -135,7 +155,6 @@ footer{padding:46px 0 58px;border-top:var(--bw) solid var(--line);margin-top:82p
     <div class="nav-links">
       <a href="#features">Features</a>
       <a href="#how">How it works</a>
-      <a href="#compare">Why Mocca</a>
       <a href="#download" class="btn btn-primary">Download</a>
     </div>
   </div>
@@ -146,10 +165,10 @@ footer{padding:46px 0 58px;border-top:var(--bw) solid var(--line);margin-top:82p
     <h1>Email powered by Local AI</h1>
     <p class="sub">Mocca is a desktop email client that connects to your existing inbox and runs an LLM on your machine to classify mail, curate the inbox, and apply rules you write in plain English. No email or content leaves your computer.</p>
     <div class="cta">
-      <a href="https://github.com/valehelle/mocca-releases/releases/latest/download/Mocca_Mail_0.1.0_aarch64.dmg" class="btn btn-primary">Download for Mac</a>
+      <a href="https://github.com/valehelle/mocca-releases/releases/latest/download/Mocca_Mail_0.2.0_aarch64.dmg" class="btn btn-primary">Download for Mac</a>
       <a href="#how" class="btn btn-ghost">See how it works</a>
     </div>
-    <div style="margin-top:14px;font-size:13px;color:var(--mut)">macOS on Apple Silicon (M1 or later) · Intel &amp; Windows coming soon. First launch downloads the model (~10&nbsp;GB), once.</div>
+    <div style="margin-top:14px;font-size:13px;color:var(--mut)">macOS on Apple Silicon (M1 or later). First launch downloads the model (~10&nbsp;GB), once.</div>
 
     <div class="shot">
       <div class="window">
@@ -172,6 +191,19 @@ footer{padding:46px 0 58px;border-top:var(--bw) solid var(--line);margin-top:82p
             <div class="mail"><div class="av">I</div><div class="m-mid"><div class="who">Indeed</div><div class="subj">3 new roles match your search</div></div><span class="time">Yesterday</span></div>
             <div class="mail"><div class="av">A</div><div class="m-mid"><div class="who">Airbnb</div><div class="subj">Your trip to Penang is confirmed</div></div><span class="time">Mon</span></div>
           </div>
+          <div class="win-agent">
+            <div class="wa-head"><span class="dot"></span> Mocca</div>
+            <div class="wa-user">Trash all promotions and unsubscribe from newsletters</div>
+            <div class="wa-think"><span class="sp"></span> Planning the steps…</div>
+            <div class="wa-card">
+              <div class="h">Confirm — 2 steps</div>
+              <ol class="wa-steps">
+                <li><span class="n">1</span><span>Move <b>218</b> promotions to Trash</span></li>
+                <li><span class="n">2</span><span>Unsubscribe from <b>6</b> senders</span></li>
+              </ol>
+              <div class="wa-btns"><span class="ghost">Cancel</span><span class="go">Approve all</span></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -189,25 +221,26 @@ footer{padding:46px 0 58px;border-top:var(--bw) solid var(--line);margin-top:82p
 <section id="features">
   <div class="wrap">
     <div class="head">
-      <h2>Three things you couldn't do before</h2>
-      <p>Not filters, not keyword search — the model reads each email's content. All on your machine.</p>
+      <h2>Your words are the rules</h2>
+      <p>No filters, no regex, no conditions to wire up. You describe what you want in plain English — an AI on your Mac reads every email and carries it out.</p>
     </div>
     <div class="grid">
       <div class="card">
         <div class="ic"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="16" height="12" rx="2"/><path d="M3 7l8 5 8-5"/></svg></div>
-        <h3>An inbox of only what matters</h3>
-        <p>The AI reads each email and decides what's actually for you — personal mail, orders, bank alerts — and keeps promotions, newsletters and notifications out. It judges the content, not a list of sender rules you have to maintain.</p>
+        <h3>The Inbox rule</h3>
+        <p>Define your Inbox in one sentence. The AI reads every incoming email and keeps your Inbox to exactly that — everything else is sorted into All Mail, not lost. It judges the content, not a list of sender filters you have to maintain.</p>
+        <div class="ex">“Only <b>people I actually know</b>, plus my orders and bank alerts.”</div>
       </div>
       <div class="card">
         <div class="ic"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h12M4 12h9M4 17h6"/></svg></div>
-        <h3>Tell it what to do, in plain English</h3>
-        <p>Write a rule in your own words — the AI reads every email and does it: label, sort, trash, unsubscribe. No filters, no regex, no conditions to wire up.</p>
-        <div class="ex">“Promotional emails — <b>move to trash and unsubscribe</b>.”</div>
+        <h3>Label rules that act</h3>
+        <p>Define a label by what it means, in your own words — Mocca reads the content and applies it to any matching email, whoever sent it. Add an action and it does that too: trash, unsubscribe, mark read, mute.</p>
+        <div class="ex">“<b>pitch</b> — any email pitching a startup idea, whoever it's from.”</div>
       </div>
       <div class="card">
         <div class="ic"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="6"/><path d="M19 19l-4.5-4.5"/></svg></div>
-        <h3>Ask your mailbox a question</h3>
-        <p>“What did I buy from Amazon last month?” It reads the actual emails and answers — by what they say, not just subject lines or keyword matches.</p>
+        <h3>Ask — or chain actions in one line</h3>
+        <p>“What did I buy from Amazon last month?” It reads the real emails and answers. Or tell it several things at once — “trash promotions and unsubscribe from newsletters” — and approve them together.</p>
       </div>
     </div>
   </div>
@@ -239,29 +272,12 @@ footer{padding:46px 0 58px;border-top:var(--bw) solid var(--line);margin-top:82p
   </div>
 </section>
 
-<section id="compare">
-  <div class="wrap">
-    <div class="head">
-      <h2>How it differs from cloud AI email</h2>
-      <p>The AI features other clients offer run server-side — your mail is processed on their machines. Mocca's run on yours.</p>
-    </div>
-    <div class="cmp">
-      <div class="r h"><div class="feat">&nbsp;</div><div>Mocca</div><div>Cloud AI mail</div></div>
-      <div class="r"><div class="feat">AI runs on your device</div><div class="mcol yes">Yes</div><div class="no">No — on their servers</div></div>
-      <div class="r"><div class="feat">Your email leaves your machine</div><div class="mcol yes">Never</div><div class="no">Yes</div></div>
-      <div class="r"><div class="feat">Reading downloaded mail works offline</div><div class="mcol yes">Yes</div><div class="no">No</div></div>
-      <div class="r"><div class="feat">Auto-sort + auto-actions by your rules</div><div class="mcol yes">Yes</div><div class="no">Limited</div></div>
-      <div class="r"><div class="feat">Account / subscription required</div><div class="mcol yes">None</div><div class="no">Usually</div></div>
-    </div>
-  </div>
-</section>
-
 <section id="download" style="padding-top:24px">
   <div class="band">
     <h2>Email that stays on your machine.</h2>
     <p>A private inbox with a built-in AI. Connect your email and you're set — no cloud, no account.</p>
-    <a href="https://github.com/valehelle/mocca-releases/releases/latest/download/Mocca_Mail_0.1.0_aarch64.dmg" class="btn btn-primary">Download for Mac</a>
-    <div style="margin-top:14px;font-size:12.5px;color:#9a99a6">Requires macOS on Apple Silicon (M1 or later) · Apple-notarized · Free · Intel &amp; Windows coming soon</div>
+    <a href="https://github.com/valehelle/mocca-releases/releases/latest/download/Mocca_Mail_0.2.0_aarch64.dmg" class="btn btn-primary">Download for Mac</a>
+    <div style="margin-top:14px;font-size:12.5px;color:#9a99a6">Requires macOS on Apple Silicon (M1 or later) · Apple-notarized · Free</div>
   </div>
 </section>
 
@@ -272,11 +288,10 @@ footer{padding:46px 0 58px;border-top:var(--bw) solid var(--line);margin-top:82p
       <div class="foot-links">
         <a href="#features">Features</a>
         <a href="#how">How it works</a>
-        <a href="#compare">Why Mocca</a>
         <a href="#download">Download</a>
       </div>
     </div>
-    <div class="foot-note">Honest about limits: Mac only for now (Windows planned). The local model is small and not as capable as hosted models like GPT-4 — it's good at sorting and short tasks, not deep reasoning. You need a connection to fetch and send mail; reading cached mail and the on-device AI work offline. Outlook isn't supported yet (Microsoft requires OAuth, which Mocca doesn't do). It connects directly to your provider over IMAP — there are no Mocca servers.</div>
+    <div class="foot-note">Honest about limits: Mac only, Apple Silicon. The local model is small and not as capable as hosted models like GPT-4 — it's good at sorting and short tasks, not deep reasoning. You need a connection to fetch and send mail; reading cached mail and the on-device AI work offline. Outlook isn't supported yet (Microsoft requires OAuth, which Mocca doesn't do). It connects directly to your provider over IMAP — there are no Mocca servers.</div>
   </div>
 </footer>
 
